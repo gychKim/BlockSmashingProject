@@ -47,7 +47,8 @@ Scene
 ### 1. 타입 안전 EventManager
 
 씬 간 결합도를 낮추기 위해 Generic Enum 기반의 EventManager를 직접 구현했습니다.  
-각 이벤트는 `Guid`로 관리되어 구독 해제 시 정확한 대상만 제거됩니다.
+각 이벤트는 `Guid`로 관리되어 구독 해제 시 정확한 대상만 제거됩니다.  
+초기에는 이벤트 타입별로 Dictionary를 분리 관리했으나, 씬이 늘어날수록 관리 비용이 커져 `Subscribe<TEnum>` 형태의 Generic 구조로 리팩토링했습니다.
 
 ```csharp
 // 구독
